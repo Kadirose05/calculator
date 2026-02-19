@@ -67,6 +67,31 @@ buttons.forEach(button => {
 });
 
 
+document.addEventListener('keydown',(e)=>{
+    let key = e.key;
+    if(key <='9' && key >='0'){
+        if(text.textContent === '0' || shouldReset){
+            text.textContent = key;
+            shouldReset = false;
+        }
+        else{
+            text.textContent +=key;
+        }
+    }
+    else if(key === '+' || key === '-' || key === '/' || key === '*'){
+        num1 = text.textContent;
+        operator = key;
+        text.textContent = '0';
+        shouldReset = false;
+    }
+    else if(key === 'Enter'){
+        num2 = text.textContent;
+        text.textContent = operate(parseFloat(num1), parseFloat(num2), operator);
+        shouldReset = true;
+    }
+});
+
+
 
 
 
