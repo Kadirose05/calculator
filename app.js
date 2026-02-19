@@ -89,6 +89,21 @@ document.addEventListener('keydown',(e)=>{
         text.textContent = operate(parseFloat(num1), parseFloat(num2), operator);
         shouldReset = true;
     }
+    else if(key === 'Escape'){
+        text.textContent = '0';
+        num1 = null;
+        num2 = null;
+        operator = null;
+        shouldReset = false;
+    }
+    else if(key === 'Backspace'){
+        if(text.textContent.length > 1){
+            text.textContent = text.textContent.slice(0,-1);
+        }
+        else {
+            text.textContent = '0';
+        }
+    }
 });
 
 
